@@ -46,6 +46,13 @@
       "sha1": "25d1de53f86cec5b3a98020f3f2f8d52b190647b"
     },
     {
+      "name": "Mod Menu",
+      "dir": "mods",
+      "file": "modmenu-21.0.0.jar",
+      "url": "https://cdn.modrinth.com/data/mOgUt4GM/versions/kyy7dbrZ/modmenu-21.0.0.jar",
+      "sha1": "66ec40f1cd0c037ddca2b5fc6b4b976d479c18e8"
+    },
+    {
       "name": "Not Enough Animations",
       "dir": "mods",
       "file": "notenoughanimations-fabric-1.12.6-mc26.3.jar",
