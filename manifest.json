@@ -46,6 +46,34 @@
       "sha1": "25d1de53f86cec5b3a98020f3f2f8d52b190647b"
     },
     {
+      "name": "Not Enough Animations",
+      "dir": "mods",
+      "file": "notenoughanimations-fabric-1.12.6-mc26.3.jar",
+      "url": "https://cdn.modrinth.com/data/MPCX6s5C/versions/EhSk2OTD/notenoughanimations-fabric-1.12.6-mc26.3.jar",
+      "sha1": "6554509fc89187c5b6d63f586edfc35b8e41158c"
+    },
+    {
+      "name": "Entity Texture Features",
+      "dir": "mods",
+      "file": "entity_texture_features-7.2.6-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/BVzZfTc1/versions/OOEycXyN/entity_texture_features-7.2.6-26.3-fabric.jar",
+      "sha1": "40fd33455e0543a5716f8cb7100d0d3c7abde3d8"
+    },
+    {
+      "name": "Entity Model Features",
+      "dir": "mods",
+      "file": "entity_model_features-3.3.12-26.3-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/4I1XuqiY/versions/vF6qLXsA/entity_model_features-3.3.12-26.3-fabric.jar",
+      "sha1": "2d076285c7e0671165fc86a827e62ce88ddcd201"
+    },
+    {
+      "name": "Fresh Animations",
+      "dir": "resourcepacks",
+      "file": "FreshAnimations_v1.11.1_26.1+.zip",
+      "url": "https://cdn.modrinth.com/data/50dA9Sha/versions/tvGVYMD4/FreshAnimations_v1.11.1_26.1%2B.zip",
+      "sha1": "ae9175983c5109162c86daae1acff34ccf623faf"
+    },
+    {
       "name": "Complementary Reimagined",
       "dir": "shaderpacks",
       "file": "ComplementaryReimagined_r5.9.3.zip",

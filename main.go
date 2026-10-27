@@ -101,6 +101,10 @@ func run() error {
 		return fmt.Errorf("configurando shaders: %w", err)
 	}
 
+	if err := enableResourcePacks(filepath.Join(gameDir, "options.txt"), m.Files); err != nil {
+		return fmt.Errorf("activando paquetes de recursos: %w", err)
+	}
+
 	if m.Server != nil {
 		added, err := addServer(filepath.Join(gameDir, "servers.dat"), m.Server.Name, m.Server.IP)
 		if err != nil {
@@ -210,6 +214,66 @@ func shaderPackName(files []PackFile) string {
 		}
 	}
 	return ""
+}
+
+// enableResourcePacks agrega los paquetes de recursos del pack a la linea
+// resourcePacks de options.txt, conservando los que el usuario ya tenga activos.
+func enableResourcePacks(path string, files []PackFile) error {
+	var packs []string
+	for _, f := range files {
+		if f.Dir == "resourcepacks" {
+			packs = append(packs, "file/"+f.File)
+		}
+	}
+	if len(packs) == 0 {
+		return nil
+	}
+	data, err := os.ReadFile(path)
+	if err != nil && !errors.Is(err, os.ErrNotExist) {
+		return err
+	}
+	lines := strings.Split(strings.TrimRight(string(data), "\n"), "\n")
+	if len(data) == 0 {
+		lines = nil
+	}
+	idx := -1
+	active := []string{"vanilla"}
+	for i, l := range lines {
+		if strings.HasPrefix(l, "resourcePacks:") {
+			idx = i
+			if err := json.Unmarshal([]byte(strings.TrimPrefix(l, "resourcePacks:")), &active); err != nil {
+				active = []string{"vanilla"}
+			}
+		}
+	}
+	changed := false
+	for _, p := range packs {
+		found := false
+		for _, a := range active {
+			if a == p {
+				found = true
+			}
+		}
+		if !found {
+			active = append(active, p) // el ultimo de la lista queda con mayor prioridad
+			changed = true
+		}
+	}
+	if !changed {
+		return nil
+	}
+	enc, _ := json.Marshal(active)
+	line := "resourcePacks:" + string(enc)
+	if idx >= 0 {
+		lines[idx] = line
+	} else {
+		lines = append(lines, line)
+	}
+	if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+		return err
+	}
+	fmt.Println("[ok] Paquetes de recursos activados")
+	return os.WriteFile(path, []byte(strings.Join(lines, "\n")+"\n"), 0o644)
 }
 
 // updateProfiles agrega o actualiza el perfil en los archivos de perfiles del launcher.

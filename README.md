@@ -5,6 +5,7 @@ Instala en el **launcher oficial de Minecraft** un perfil listo para jugar en el
 - Minecraft **26.3** con **Fabric Loader 0.20.1**
 - Fabric API, Sodium, Iris Shaders
 - Cinematic Interactions, AFK Cinematics
+- Animaciones: Not Enough Animations y **Fresh Animations** (con EMF + ETF), ya activado
 - Shaders **Complementary Reimagined** activados
 - El servidor agregado a la lista de multijugador
 
