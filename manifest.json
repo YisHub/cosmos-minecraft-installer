@@ -53,6 +53,13 @@
       "sha1": "66ec40f1cd0c037ddca2b5fc6b4b976d479c18e8"
     },
     {
+      "name": "Cosmos Tabs",
+      "dir": "mods",
+      "file": "cosmos-tabs-1.0.0.jar",
+      "url": "https://github.com/YisHub/cosmos-tabs/releases/download/v1.0.0/cosmos-tabs-1.0.0.jar",
+      "sha1": "72b28ef6007a17cd421acab9bd5f1bf23f5d2560"
+    },
+    {
       "name": "Not Enough Animations",
       "dir": "mods",
       "file": "notenoughanimations-fabric-1.12.6-mc26.3.jar",
