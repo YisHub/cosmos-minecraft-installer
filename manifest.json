@@ -60,6 +60,13 @@
       "sha1": "72b28ef6007a17cd421acab9bd5f1bf23f5d2560"
     },
     {
+      "name": "Punchy",
+      "dir": "mods",
+      "file": "punchy-2.8g-fabric-26.3.jar",
+      "url": "https://cdn.modrinth.com/data/8aoMKplv/versions/Fi951GUL/punchy-2.8g-fabric-26.3.jar",
+      "sha1": "70a910465e4b36f55f6193991fc0c47545f6cebf"
+    },
+    {
       "name": "Not Enough Animations",
       "dir": "mods",
       "file": "notenoughanimations-fabric-1.12.6-mc26.3.jar",

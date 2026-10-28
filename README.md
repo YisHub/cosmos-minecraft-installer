@@ -7,7 +7,7 @@ Instala en el **launcher oficial de Minecraft** un perfil listo para jugar en el
 - Cinematic Interactions, AFK Cinematics
 - [Cosmos Tabs](https://github.com/YisHub/cosmos-tabs): ventanas de cofres movibles, pestañas
   entre cofres pegados, dos ventanas a la vez y cortar/pegar (Ctrl+clic, Ctrl+X, Ctrl+V)
-- Animaciones: Not Enough Animations y **Fresh Animations** (con EMF + ETF), ya activado
+- Animaciones: Punchy (primera persona), Not Enough Animations y **Fresh Animations** (con EMF + ETF), ya activado
 - Shaders **Complementary Reimagined** activados
 - El servidor agregado a la lista de multijugador
 
