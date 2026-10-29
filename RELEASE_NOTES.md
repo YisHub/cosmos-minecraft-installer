@@ -1,3 +1,11 @@
+## Novedades
+
+- **Cosmos Tabs 1.0.1:** pestañas con páginas (flechas ◀ ▶ o rueda del mouse) para paredes con
+  muchos cofres, las tapas de los cofres ya no quedan abiertas después de usar dos ventanas, y
+  se puede entrar al servidor aunque no tengas el mod.
+
+Si ya tenías el pack, vuelve a ejecutar el instalador: cambia Cosmos Tabs por la versión nueva.
+
 ## Cómo instalar
 
 1. Descarga **Instalador-Cosmos-26.3.exe** (abajo, en *Assets*).
