@@ -39,10 +39,25 @@ Para entrar al servidor hace falta [Tailscale](https://tailscale.com/download) y
 ## Qué hace el instalador
 
 - Todo se instala en `%APPDATA%\.minecraft\cosmos-26.3`, separado de tu Minecraft normal.
-- Los mods **no están en este repositorio**: el instalador los descarga de Modrinth y CurseForge
-  y comprueba el hash SHA-1 de cada archivo.
+- Los mods **no están en este repositorio**: el instalador los descarga de Modrinth,
+  CurseForge y GitHub (Cosmos Tabs) y comprueba el hash SHA-1 de cada archivo. Lo único que
+  viaja dentro del `.exe` es el paquete de traducciones Cosmos Español.
+- Activa los shaders y los paquetes de recursos del pack (Fresh Animations, Punchy y Cosmos
+  Español) sin desactivar los que ya tengas.
+- Agrega el servidor a la lista de multijugador.
 - Volver a ejecutarlo actualiza el pack: baja lo que cambió y borra versiones viejas que haya puesto él.
   Los mods que agregues a mano no se tocan.
+
+## Problemas comunes
+
+| Mensaje o síntoma | Causa y solución |
+|---|---|
+| *"You are not white-listed on this server!"* | El servidor tiene la lista blanca activada (viene así por defecto en 26.x). Jesus pone `white-list=false` en Crafty o te agrega con `/whitelist add <nombre>`. |
+| *"This server requires Fabric API… cosmostabs"* | Era un error de Cosmos Tabs 1.0.0. Con la 1.0.1 (instalador v1.0.5 en adelante) se entra con o sin el mod. Vuelve a ejecutar el instalador. |
+| Las pestañas o las dos ventanas no aparecen | El servidor y tu pack tienen que tener la misma versión de Cosmos Tabs. Vuelve a ejecutar el instalador. |
+| Cofres que quedan con la tapa abierta | Error de Cosmos Tabs 1.0.0, arreglado en la 1.0.1. Abre y cierra el cofre una vez. |
+| Sodium o Punchy siguen en inglés | Pon el juego en español (*Opciones → Idioma*) y comprueba que **Cosmos Español** esté activo en *Opciones → Paquetes de recursos*. |
+| No conecta al servidor | Hace falta Tailscale conectado a la red de Jesus. |
 
 ## Desinstalar
 
@@ -68,6 +83,10 @@ recursos **Cosmos Español** los traduce, y completa lo que les falta en españo
 - Los ajustes del shader Complementary quedan en inglés: su licencia no permite modificarlo.
 
 Las traducciones están en [`espanol/`](espanol/README.md), una por mod.
+
+## Versiones
+
+Ver [CHANGELOG.md](CHANGELOG.md).
 
 ## Actualizar el pack (para Jesus)
 
