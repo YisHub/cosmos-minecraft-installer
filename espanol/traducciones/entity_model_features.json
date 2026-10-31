@@ -1,0 +1,6 @@
+{
+ "entity_model_features.config.parrot_shoulder_animate": "El loro del hombro sigue las animaciones del jugador",
+ "entity_model_features.config.parrot_shoulder_animate.tooltip": "Hace que, por defecto, el loro del hombro siga la posición animada del jugador. No es lo mismo que los puntos de anclaje `parrot_left` y `parrot_right`, que no giran.",
+ "entity_model_features.config.sulfur_cube_block": "Animación por defecto del bloque del cubo de azufre",
+ "entity_model_features.config.sulfur_cube_block.tooltip": "Hace que, por defecto, los bloques internos del cubo de azufre se animen. Equivale a tener un anclaje 'sulfur_cube_block' en la parte 'cube' del modelo con desplazamiento 0,0,0."
+}

@@ -23,6 +23,16 @@ import (
 //go:embed manifest.json
 var manifestJSON []byte
 
+// Paquete de traducciones al español, armado por espanol/build.py antes de compilar.
+//
+//go:embed espanol/dist/Cosmos-Espanol.zip
+var espanolZip []byte
+
+// Archivos que viajan dentro del .exe en vez de descargarse ("embedded": true en el manifiesto).
+var embeddedFiles = map[string][]byte{
+	"Cosmos-Espanol.zip": espanolZip,
+}
+
 type Manifest struct {
 	PackName     string `json:"packName"`
 	ProfileID    string `json:"profileId"`
@@ -43,6 +53,8 @@ type PackFile struct {
 	File string `json:"file"`
 	URL  string `json:"url"`
 	SHA1 string `json:"sha1"`
+	// Embedded: el archivo va dentro del instalador (embeddedFiles); no lleva url ni sha1.
+	Embedded bool `json:"embedded"`
 }
 
 // Archivo donde se anotan los archivos que puso el instalador, para borrar
@@ -169,18 +181,31 @@ func installFiles(gameDir string, files []PackFile) error {
 		rel := filepath.Join(f.Dir, f.File)
 		current[rel] = true
 		dest := filepath.Join(gameDir, rel)
-		if sum, err := fileSHA1(dest); err == nil && sum == f.SHA1 {
+		want := f.SHA1
+		var data []byte
+		if f.Embedded {
+			data = embeddedFiles[f.File]
+			if data == nil {
+				return fmt.Errorf("%s: no viene dentro del instalador", f.Name)
+			}
+			sum := sha1.Sum(data)
+			want = hex.EncodeToString(sum[:])
+		}
+		if sum, err := fileSHA1(dest); err == nil && sum == want {
 			fmt.Printf("[ok] %s (ya estaba)\n", f.Name)
 			continue
 		}
-		fmt.Printf("[..] Descargando %s...\n", f.Name)
-		data, err := fetch(f.URL)
-		if err != nil {
-			return fmt.Errorf("descargando %s: %w", f.Name, err)
-		}
-		sum := sha1.Sum(data)
-		if hex.EncodeToString(sum[:]) != f.SHA1 {
-			return fmt.Errorf("%s: el archivo descargado no coincide con el esperado (hash)", f.Name)
+		if !f.Embedded {
+			fmt.Printf("[..] Descargando %s...\n", f.Name)
+			var err error
+			data, err = fetch(f.URL)
+			if err != nil {
+				return fmt.Errorf("descargando %s: %w", f.Name, err)
+			}
+			sum := sha1.Sum(data)
+			if hex.EncodeToString(sum[:]) != f.SHA1 {
+				return fmt.Errorf("%s: el archivo descargado no coincide con el esperado (hash)", f.Name)
+			}
 		}
 		if err := os.MkdirAll(filepath.Dir(dest), 0o755); err != nil {
 			return err

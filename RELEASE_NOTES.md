@@ -1,10 +1,14 @@
 ## Novedades
 
+- **Todo en español:** el pack trae el paquete **Cosmos Español**, ya activado. Traduce Sodium
+  (opciones de video), Punchy, Not Enough Animations y AFK Cinematics, y completa Iris, EMF y ETF.
+  Tienes que tener el juego en español (*Opciones → Idioma*).
 - **Cosmos Tabs 1.0.1:** pestañas con páginas (flechas ◀ ▶ o rueda del mouse) para paredes con
   muchos cofres, las tapas de los cofres ya no quedan abiertas después de usar dos ventanas, y
   se puede entrar al servidor aunque no tengas el mod.
 
-Si ya tenías el pack, vuelve a ejecutar el instalador: cambia Cosmos Tabs por la versión nueva.
+Si ya tenías el pack, vuelve a ejecutar el instalador: agrega las traducciones y deja Cosmos Tabs
+en la última versión, sin tocar tus otros mods ni paquetes de recursos.
 
 ## Cómo instalar
 

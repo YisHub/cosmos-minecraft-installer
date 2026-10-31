@@ -1,0 +1,12 @@
+{
+ "iris.shaders.debug.restartNoDebug": "Se activó la depuración de shaders; la depuración de OpenGL no funciona en NeoForge.",
+ "iris.load.failure.shader": "¡El paquete de shaders no se pudo cargar! Reporta el error al autor del shader. ",
+ "iris.load.failure.generic": "Iris tuvo un problema al cargar el shader; repórtalo a los desarrolladores de Iris. ",
+ "iris.shaders.ssbofailure": "El shader pidió una función (SSBO) que tu GPU no admite; puede que no funcione bien.",
+ "iris.keybind.wireframe": "Modo alambre (solo un jugador)",
+ "key.category.iris.keybinds": "Iris",
+ "iris.unsupported.pack.macos": "\nEn macOS muchos paquetes de shaders tienen problemas conocidos.",
+ "options.iris.shadowDistance.sodium_tooltip": "La distancia de las sombras controla hasta dónde se puede dibujar terreno en el paso de sombras. Con distancias más cortas se dibuja menos terreno y suben los FPS. No se puede cambiar en los paquetes que fijan su propia distancia de sombras. La distancia real nunca supera la distancia de renderizado.",
+ "options.iris.colorSpace": "Espacio de color",
+ "options.iris.colorSpace.sodium_tooltip": "El espacio de color al que se transforma la imagen. Se aplica encima del paquete de shaders. Si no sabes cuál elegir, usa SRGB."
+}

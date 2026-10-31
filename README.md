@@ -10,6 +10,7 @@ Instala en el **launcher oficial de Minecraft** un perfil listo para jugar en el
   (Ctrl+clic, Ctrl+X, Ctrl+V)
 - Animaciones: Punchy (primera persona), Not Enough Animations y **Fresh Animations** (con EMF + ETF), ya activado
 - Shaders **Complementary Reimagined** activados
+- **Cosmos Español**: traduce al español los mods que solo vienen en inglés, ya activado
 - El servidor agregado a la lista de multijugador
 
 ## Instalar
@@ -50,15 +51,32 @@ Borra la carpeta `%APPDATA%\.minecraft\cosmos-26.3`, la carpeta
 
 ## Idioma
 
-Sodium, Punchy, Not Enough Animations y AFK Cinematics solo vienen en inglés. Jesus armó un
-paquete de recursos, **Cosmos Español**, que los traduce (524 textos, para todas las variantes
-de español del juego); por ahora está solo en su instalación, no en este instalador.
-Los ajustes del shader Complementary quedan en inglés: su licencia no permite modificarlo.
+Sodium, Punchy, Not Enough Animations y AFK Cinematics solo vienen en inglés. El paquete de
+recursos **Cosmos Español** los traduce, y completa lo que les falta en español a Iris, EMF y ETF:
+
+| Mod | Qué traduce | Textos |
+|---|---|---|
+| Sodium | Opciones de video completas, con descripciones y avisos | 105 |
+| Punchy | Ajustes, editor y mensajes | 280 |
+| Not Enough Animations | Ajustes completos | 107 |
+| AFK Cinematics | Ajustes y teclas | 16 |
+| Iris, EMF, ETF | Solo lo que les faltaba | 16 |
+
+- Viene **dentro del instalador** y queda activado; se ve con el juego en cualquier variante de
+  español (*Opciones → Idioma*). Los que ya tenían el pack lo reciben al volver a ejecutarlo.
+- Cinematic Interactions, Mod Menu y Cosmos Tabs ya vienen en español.
+- Los ajustes del shader Complementary quedan en inglés: su licencia no permite modificarlo.
+
+Las traducciones están en [`espanol/`](espanol/README.md), una por mod.
 
 ## Actualizar el pack (para Jesus)
 
 1. Edita `manifest.json` (URL y `sha1` de cada archivo).
 2. `git tag v1.x.x && git push --tags` — GitHub Actions compila el `.exe` y crea la release.
+
+Las traducciones no se descargan: GitHub Actions arma `Cosmos-Espanol.zip` con
+`espanol/build.py` y queda dentro del `.exe` (`"embedded": true` en el manifiesto). Para compilar
+a mano, corre primero `python3 espanol/build.py`.
 
 Para actualizar Cosmos Tabs: primero se publica su versión nueva (tag en
 [cosmos-tabs](https://github.com/YisHub/cosmos-tabs)), después se cambian URL y `sha1` aquí.

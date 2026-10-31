@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: "1.22"
+      - name: Armar el paquete de traducciones
+        run: python3 espanol/build.py
       - name: Compilar para Windows
         run: GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags "-s -w" -o Instalador-Cosmos-26.3.exe .
       - name: Publicar release
