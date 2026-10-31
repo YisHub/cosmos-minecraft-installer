@@ -28,6 +28,26 @@ var manifestJSON []byte
 //go:embed espanol/dist/Cosmos-Espanol.zip
 var espanolZip []byte
 
+// Configuración inicial de Interactive Foliage (solo si el jugador no tiene una): renderizador por CPU,
+// probada en el juego con Complementary Reimagined.
+const interactiveFoliageConfig = `{
+  "gpuRenderer": false,
+  "gpuDistance": "full",
+  "wavingFoliage": true,
+  "wavingLeaves": true,
+  "weatherWind": true,
+  "weatherWindDistance": "full",
+  "wavingIntensity": 1.0,
+  "defaultRadiusApplied": true,
+  "windWalls": []
+}
+`
+
+// Configuración de Punchy con los 17 mapas de 26.3 en itemBlacklist (su lista de objetos sin animar).
+//
+//go:embed configs/punchy_config.json
+var punchyConfig []byte
+
 // Archivos que viajan dentro del .exe en vez de descargarse ("embedded": true en el manifiesto).
 var embeddedFiles = map[string][]byte{
 	"Cosmos-Espanol.zip": espanolZip,
@@ -111,6 +131,17 @@ func run() error {
 	if err := writeIfMissing(filepath.Join(gameDir, "config", "iris.properties"),
 		[]byte("enableShaders=true\nshaderPack="+shaderPackName(m.Files)+"\n")); err != nil {
 		return fmt.Errorf("configurando shaders: %w", err)
+	}
+
+	// Con el renderizador por GPU, Complementary deja blancas las matas de pasto lejanas.
+	if err := writeIfMissing(filepath.Join(gameDir, "config", "mc2_interactivefoliage.json"),
+		[]byte(interactiveFoliageConfig)); err != nil {
+		return fmt.Errorf("configurando Interactive Foliage: %w", err)
+	}
+
+	// Punchy dibuja mal los mapas en la mano; se excluyen todos de sus animaciones.
+	if err := excludeMapsFromPunchy(filepath.Join(gameDir, "config", "punchy", "punchy_config.json")); err != nil {
+		return fmt.Errorf("configurando Punchy: %w", err)
 	}
 
 	if err := enableResourcePacks(filepath.Join(gameDir, "options.txt"), m.Files); err != nil {
@@ -384,6 +415,48 @@ func addServer(path, name, ip string) (bool, error) {
 		return false, err
 	}
 	return true, os.WriteFile(path, b.Bytes(), 0o644)
+}
+
+// excludeMapsFromPunchy crea la configuración de Punchy si no existe. Si ya existe (Punchy viene en el
+// pack desde v1.0.4), solo agrega a su itemBlacklist los mapas que falten y deja el resto como está.
+func excludeMapsFromPunchy(path string) error {
+	data, err := os.ReadFile(path)
+	if errors.Is(err, os.ErrNotExist) {
+		return writeIfMissing(path, punchyConfig)
+	}
+	if err != nil {
+		return err
+	}
+	var cfg, base map[string]any
+	if err := json.Unmarshal(data, &cfg); err != nil {
+		return fmt.Errorf("%s no es JSON valido: %w", path, err)
+	}
+	if err := json.Unmarshal(punchyConfig, &base); err != nil {
+		return err
+	}
+	list, _ := cfg["itemBlacklist"].([]any)
+	seen := map[string]bool{}
+	for _, v := range list {
+		if id, ok := v.(string); ok {
+			seen[id] = true
+		}
+	}
+	added := false
+	for _, v := range base["itemBlacklist"].([]any) {
+		if id := v.(string); !seen[id] {
+			list = append(list, id)
+			added = true
+		}
+	}
+	if !added {
+		return nil
+	}
+	cfg["itemBlacklist"] = list
+	out, err := json.MarshalIndent(cfg, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, out, 0o644)
 }
 
 func writeIfMissing(path string, data []byte) error {
