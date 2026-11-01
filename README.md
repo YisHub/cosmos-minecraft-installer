@@ -13,7 +13,6 @@ Instala en el **launcher oficial de Minecraft** un perfil listo para jugar en el
 - Animaciones: Punchy (primera persona), Not Enough Animations y **Fresh Animations** (con EMF + ETF), ya activado
 - Mundo vivo: **Fancy World Animations** (puertas, trampillas, palancas…) e **Interactive Foliage**
   (el pasto se aparta al pasar y se mueve con el viento; necesita Sway API)
-- **Diorama**: minimapa y mapa del mundo en ángulo, con puntos de ruta y dibujos
 - **Scribble**: editor de libros con formato
 - Shaders **Complementary Reimagined** activados
 - **Cosmos Español**: traduce al español los mods que solo vienen en inglés, ya activado
@@ -87,12 +86,11 @@ Borra la carpeta `%APPDATA%\.minecraft\cosmos-26.3`, la carpeta
 ## Idioma
 
 Muchos mods del pack solo vienen en inglés, o traen un español incompleto o para una sola
-variante. El paquete de recursos **Cosmos Español** los traduce completos (1659 textos):
+variante. El paquete de recursos **Cosmos Español** los traduce completos (1320 textos):
 
 | Mod | Qué traduce | Textos |
 |---|---|---|
 | Distant Horizons | Toda la configuración, con descripciones y valores | 489 |
-| Diorama | Minimapa, mapa, puntos de ruta, dibujos y ajustes | 339 |
 | Punchy | Ajustes, editor y mensajes | 280 |
 | Mod Menu | Completo en todas las variantes (solo venía completo en es_ar) | 172 |
 | Not Enough Animations | Ajustes completos | 107 |

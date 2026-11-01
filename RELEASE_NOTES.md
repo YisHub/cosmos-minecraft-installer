@@ -1,4 +1,9 @@
-## Novedades
+## Novedades en la v1.0.8
+
+- **Se quita Diorama** (el minimapa): aportaba poco. Al volver a ejecutar el instalador se borra
+  solo; tus puntos de ruta se pierden.
+
+## Lo que trajo la v1.0.7
 
 - **Distant Horizons:** se ve el terreno lejano mucho más allá de la distancia de renderizado
   normal. El servidor ya tiene precargados unos 16 km alrededor del spawn, y también el Nether
@@ -8,20 +13,18 @@
 - **Mundo más vivo:** **Fancy World Animations** anima puertas, trampillas, palancas, cofres y
   más, e **Interactive Foliage** hace que el pasto y las flores se aparten al pasar y se muevan
   con el viento.
-- **Diorama:** minimapa y mapa del mundo en ángulo, con puntos de ruta, radar y dibujos sobre el
-  mapa. **M** abre el mapa, **B** agrega un punto de ruta y **U** abre la lista.
 - **Scribble:** editor de libros con negrita, colores, deshacer y guardar o cargar libros.
 - **Mejor rendimiento:** Lithium, FerriteCore, ImmediatelyFast y Entity Culling.
 - **6 GB de RAM** para el perfil (antes 4 GB). Si tu PC tiene 8 GB de RAM o menos y el juego va
   lento, bájalo en el launcher (*Instalaciones → Cosmos 26.3 → Más opciones*, `-Xmx4G`).
   Ojo: volver a ejecutar el instalador lo deja otra vez en 6 GB.
-- **Todo en español:** Cosmos Español ahora traduce también Distant Horizons, Diorama, Mod Menu,
-  Fancy World Animations, Scribble y Entity Culling (1659 textos en total).
+- **Todo en español:** Cosmos Español ahora traduce también Distant Horizons, Mod Menu,
+  Fancy World Animations, Scribble y Entity Culling (1320 textos en total).
 - **Arreglos con los shaders:** Interactive Foliage queda con el renderizador por CPU (con el de
   GPU el pasto lejano se ve blanco) y Punchy ya no anima los mapas (se veían cortados en la mano).
 
-Si ya tenías el pack, vuelve a ejecutar el instalador: agrega los mods nuevos y las traducciones,
-sin tocar tus otros mods, paquetes de recursos ni ajustes.
+Si ya tenías el pack, vuelve a ejecutar el instalador: agrega los mods nuevos, quita Diorama y actualiza las
+traducciones, sin tocar tus otros mods, paquetes de recursos ni ajustes.
 
 ## Cómo instalar
 
